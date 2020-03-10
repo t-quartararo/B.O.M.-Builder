@@ -19,7 +19,15 @@
 }
 
 #box-2 {
+    display: flex;
+    flex-direction: column;
     background: lightgrey;
+}
+
+#sketch-container {
+    height: 100vh;
+    margin: 50px;
+    border: .5px solid black;
 }
 
 .line {
