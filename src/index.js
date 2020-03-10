@@ -1,7 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import Header from "./Header.js"
+import Body from "./SketchArea.js"
+import ToolBar from "./ToolBar.js"
 
+import styles from './sass/styles.scss'
+import SketchArea from "./SketchArea.js";
 
 class App extends React.Component {
   constructor() {
@@ -13,10 +17,9 @@ class App extends React.Component {
 
   render() {
       return (
-          <div>
-              <Header />
-              {/* <Body />
-              <ToolBar /> */}
+          <div id='body-grid'>
+              <SketchArea />
+              <ToolBar />
           </div>
       )
    }

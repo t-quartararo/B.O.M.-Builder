@@ -1,0 +1,24 @@
+* {
+    border: .5px solid black;
+}
+
+#body-grid {
+    display: grid;
+    width: 100%;
+    height: 700px;
+    grid-template-columns: 3fr 1fr;
+    
+}
+// #header {
+//     background: lightBlue;
+//   }
+
+#box-1 {
+    background: lightgreen;
+}
+
+#box-2 {
+    background: lightgrey;
+}
+
+
