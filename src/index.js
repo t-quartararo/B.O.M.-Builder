@@ -3,7 +3,8 @@ import ReactDOM from "react-dom";
 import Draggable, { DraggableCore } from 'react-draggable'
 import styles from './sass/styles.scss'
 import SketchArea from "./SketchArea.js";
-import ToolBar from "./ToolBar.js"
+import ToolBar from "./ToolBar.js";
+import axios from 'axios';
 
 class App extends React.Component {
   constructor() {
@@ -35,6 +36,12 @@ fileSelectedHandler = event => {
 
 fileSubmitHandler = () => {
   console.log(this.state.selectedFile)
+  const data = new FormData() 
+  axios.post("http://localhost:3000/upload", data, { 
+      })
+      .then(res => {
+        console.log(res.statusText)
+      })
 }
 
 addCallout() {
@@ -52,7 +59,7 @@ addCallout() {
             <div className='callout' id={this.state.calloutId} >
                 <div className="handle">+</div>
                 <input type='text'></input>
-                <button onClick={this.props.deleteCallout}>X</button>
+                {/* <button onClick={this.props.deleteCallout}>X</button> */}
             </div>
         </Draggable>
     );
@@ -69,7 +76,6 @@ deleteCallout(e) {
 addLine() {
     let joined = this.state.calloutComponents.concat(
         <Draggable
-            // handle=".handle"
             defaultPosition={{x: 0, y: 0}}
             position={null}
             scale={1}
@@ -95,7 +101,7 @@ addNotes() {
           onDrag={this.handleDrag}
           onStop={this.handleStop}>
           <div>
-              <div className="handle">+</div>
+              <div className="handle">Notes</div>
               <textarea row='4' column='20'></textarea>
           </div>
       </Draggable>

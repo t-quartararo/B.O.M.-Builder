@@ -28,13 +28,29 @@
 }
 
 .callout {
-    padding: 3px;
+    padding: 8px;
     display: flex;
     div {
-        
+        color: lightgrey;
+        padding-right: 8px;
+        cursor: pointer;
     }
     input {
-        flex: 3
+        border: none;
+        flex: 3;
+        &:Hover {
+            border-bottom: lightgrey;
+        }
+    }
+    &:Hover {
+        border-radius: 3px;
+        border: 1px solid black;
+    }
+    &:Focus {
+        border: 1px solid black;
+    }
+    *:focus {
+        outline: none;
     }
 }
 #sketch-container {
@@ -69,7 +85,7 @@
 #line {
     cursor: pointer;
     margin: 5px 0px;
-    width: 150px;
+    width: 200px;
     height: 1px;
     background-color: red;
 }
