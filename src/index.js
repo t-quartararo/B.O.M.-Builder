@@ -5,6 +5,13 @@ import styles from './sass/styles.scss'
 import SketchArea from "./SketchArea.js";
 import ToolBar from "./ToolBar.js"
 
+// service firebase.storage {
+//   match /b/{bucket}/o {
+//     match /{allPaths=**} {
+//       allow read, write: if request.auth != null;
+//     }
+//   }
+// }
 
 class App extends React.Component {
   constructor() {
@@ -19,11 +26,23 @@ class App extends React.Component {
         },
         calloutComponents: [],
         lineComponents: [],
-        sketchSRC: ''
+        selectedFile: null,
+        calloutId: 0
     } 
     this.addCallout = this.addCallout.bind(this)
     this.addLine = this.addLine.bind(this)
-}   
+    this.deleteCallout = this.deleteCallout(this)
+} 
+
+fileSelectedHandler = event => {
+  this.setState({
+    selectedFile: event.target.files[0]
+  })
+}
+
+fileSubmitHandler = () => {
+  console.log(this.state.selectedFile)
+}
 
 addCallout() {
     let joined = this.state.calloutComponents.concat(
@@ -33,16 +52,25 @@ addCallout() {
             position={null}
             grid={[25, 25]}
             scale={1}
+            deleteCallout={this.deleteCallout}
             onStart={this.handleStart}
             onDrag={this.handleDrag}
             onStop={this.handleStop}>
-            <div>
+            <div className='callout' id={this.state.calloutId} >
                 <div className="handle">+</div>
                 <input type='text'></input>
+                <button onClick={this.props.deleteCallout}>X</button>
             </div>
         </Draggable>
     );
-    this.setState({ calloutComponents: joined })
+    this.setState(prevState => ({
+      calloutComponents: joined,
+      calloutId: prevState.calloutId + 1
+    }))
+}
+
+deleteCallout(e) {
+  console.log("delete")
 }
 
 addLine() {
@@ -87,7 +115,12 @@ onStop = () => {
       return (
           <div id='body-grid'>
               <SketchArea />
-              <ToolBar {...this.state} addCallout={this.addCallout} addLine={this.addLine} />
+              <ToolBar 
+              {...this.state} 
+              addCallout={this.addCallout} 
+              addLine={this.addLine} 
+              fileSelectedHandler={this.fileSelectedHandler}
+              fileSubmitHandler={this.fileSubmitHandler} />
           </div>
       )
    }

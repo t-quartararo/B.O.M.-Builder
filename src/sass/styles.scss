@@ -8,27 +8,73 @@
     display: grid;
     height: 100vh;
     grid-template-columns: 3fr 1fr;
-    
+    #box-1 {
+        
+    }
+    #box-2 {
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        background: lightgrey;
+    }
 }
-// #header {
-//     background: lightBlue;
-//   }
 
-#box-1 {
-    
-}
-
-#box-2 {
+.callout {
+    padding: 3px;
     display: flex;
-    flex-direction: column;
-    background: lightgrey;
+    // border: .5px solid black;
+    div {
+        
+    }
+    input {
+        flex: 3
+    }
 }
-
 #sketch-container {
     height: 100vh;
-    margin: 50px;
+    margin: 0px 40px;
     border: .5px solid black;
 }
+
+//Style form container
+#sf-container {
+    margin: 40px;
+    font-family: Arial, Helvetica, sans-serif;
+    // background-color: lightcyan;
+    height: 120px;
+    #row-1 {
+        height: 50px;
+        border-bottom: .5px solid grey;
+        display: flex;
+       
+    }
+    #row-2 {
+        display: flex;
+        height: 30px;
+        border-bottom: .5px solid grey;
+    }
+    #row-3 {
+        display: flex;
+        height: 30px;
+        border-bottom: .5px solid grey;
+    }
+    input {
+        border-style: none;
+        margin: 3px;
+        flex: 1;
+        border-radius: 3px;
+        &:hover {
+            border: 1px solid blue;
+        }
+        &:focus {
+            border: 1px solid blue;
+        }
+    }
+    label {
+        font-size: 14px;
+    }
+}
+
 
 .line {
     margin: 5px 0px;
