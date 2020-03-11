@@ -8,21 +8,28 @@
     display: grid;
     height: 100vh;
     grid-template-columns: 3fr 1fr;
-    #box-1 {
+}
+
+#box-1 {
         
-    }
-    #box-2 {
-        padding: 20px;
-        display: flex;
-        flex-direction: column;
-        background: lightgrey;
+}
+
+#box-2 {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    background: rgb(27, 27, 27);
+    .tb-button {
+        margin: 5px 0px;
+        height: 35px;
+        color: white;
+        background-color: transparent;
     }
 }
 
 .callout {
     padding: 3px;
     display: flex;
-    // border: .5px solid black;
     div {
         
     }
@@ -41,42 +48,26 @@
     margin: 40px;
     font-family: Arial, Helvetica, sans-serif;
     // background-color: lightcyan;
-    height: 120px;
+    height: 140px;
     #row-1 {
         height: 50px;
-        border-bottom: .5px solid grey;
         display: flex;
-       
     }
     #row-2 {
         display: flex;
-        height: 30px;
-        border-bottom: .5px solid grey;
+        height: 50px;
     }
     #row-3 {
         display: flex;
-        height: 30px;
-        border-bottom: .5px solid grey;
-    }
-    input {
-        border-style: none;
-        margin: 3px;
-        flex: 1;
-        border-radius: 3px;
-        &:hover {
-            border: 1px solid blue;
-        }
-        &:focus {
-            border: 1px solid blue;
-        }
+        height: 50px;
     }
     label {
-        font-size: 14px;
+        font-size: 11px;
     }
 }
 
-
-.line {
+#line {
+    cursor: pointer;
     margin: 5px 0px;
     width: 150px;
     height: 1px;

@@ -1,17 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import Draggable, {DraggableCore} from 'react-draggable'
+import Draggable, { DraggableCore } from 'react-draggable'
 import styles from './sass/styles.scss'
 import SketchArea from "./SketchArea.js";
 import ToolBar from "./ToolBar.js"
-
-// service firebase.storage {
-//   match /b/{bucket}/o {
-//     match /{allPaths=**} {
-//       allow read, write: if request.auth != null;
-//     }
-//   }
-// }
 
 class App extends React.Component {
   constructor() {
@@ -31,6 +23,7 @@ class App extends React.Component {
     } 
     this.addCallout = this.addCallout.bind(this)
     this.addLine = this.addLine.bind(this)
+    this.addNotes = this.addNotes.bind(this)
     this.deleteCallout = this.deleteCallout(this)
 } 
 
@@ -76,7 +69,7 @@ deleteCallout(e) {
 addLine() {
     let joined = this.state.calloutComponents.concat(
         <Draggable
-            handle=".handle"
+            // handle=".handle"
             defaultPosition={{x: 0, y: 0}}
             position={null}
             scale={1}
@@ -84,12 +77,30 @@ addLine() {
             onDrag={this.handleDrag}
             onStop={this.handleStop}>
             <div>
-                <div className="handle">+</div>
-                <div className='line'></div>
+              <div id='line' className="box"></div>
             </div>
         </Draggable>
     );
     this.setState({ calloutComponents: joined })
+}
+
+addNotes() {
+  let joined = this.state.calloutComponents.concat(
+      <Draggable
+          handle=".handle"
+          defaultPosition={{x: 0, y: 0}}
+          position={null}
+          scale={1}
+          onStart={this.handleStart}
+          onDrag={this.handleDrag}
+          onStop={this.handleStop}>
+          <div>
+              <div className="handle">+</div>
+              <textarea row='4' column='20'></textarea>
+          </div>
+      </Draggable>
+  );
+  this.setState({ calloutComponents: joined })
 }
 
 handleDrag = (e, ui) => {
@@ -119,6 +130,7 @@ onStop = () => {
               {...this.state} 
               addCallout={this.addCallout} 
               addLine={this.addLine} 
+              addNotes={this.addNotes} 
               fileSelectedHandler={this.fileSelectedHandler}
               fileSubmitHandler={this.fileSubmitHandler} />
           </div>

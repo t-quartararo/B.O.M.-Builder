@@ -6,7 +6,7 @@ function SketchArea() {
         <div id="box-1">
             <StyleForm />
             <div id='sketch-container'>
-                <img src=''></img>
+                <img src='../img/coat-sketch.jpg'></img>
             </div>
         </div>
     )
