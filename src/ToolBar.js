@@ -10,6 +10,7 @@ class ToolBar extends React.Component {
                  <button class='tb-button' onClick={this.props.addNotes}>Add Notes</button>
                  <input type='file' onChange={this.props.fileSelectedHandler}/>
                  <button class='tb-button' onClick={this.props.fileSubmitHandler}>Upload Sketch</button>
+                 <button class='tb-button' onClick={this.props.fileLoadHandler}>Load Sketch</button>
                 {this.props.calloutComponents}
                 {this.props.lineComponents}
             </div>

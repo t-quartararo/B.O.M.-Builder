@@ -21,7 +21,7 @@ class App extends React.Component {
         lineComponents: [],
         selectedFile: null,
         calloutId: 0,
-        currentSrc: '../img/coat-sketch.jpg'
+        currentSrc: ''
     } 
     this.addCallout = this.addCallout.bind(this)
     this.addLine = this.addLine.bind(this)
@@ -42,8 +42,22 @@ fileSubmitHandler = () => {
     axios.post("http://localhost:3000/upload", data, {
     })
       .then(res => { 
-        console.log(res.file)
+        res.status(200).send('OK')
     })
+}
+
+fileLoadHandler = () => {
+  console.log('fileloadhander fired')
+  fetch('http://localhost:3000/download')
+  .then((response) => {
+    return response.json();
+  })
+  .then((data) => {
+    console.log(data);
+    this.setState({
+      currentSrc: `../public/${data}`
+    })
+  });
 }
 
 addCallout() {
@@ -142,7 +156,8 @@ onStop = () => {
               addLine={this.addLine} 
               addNotes={this.addNotes} 
               fileSelectedHandler={this.fileSelectedHandler}
-              fileSubmitHandler={this.fileSubmitHandler} />
+              fileSubmitHandler={this.fileSubmitHandler}
+              fileLoadHandler={this.fileLoadHandler}  />
           </div>
       )
    }
