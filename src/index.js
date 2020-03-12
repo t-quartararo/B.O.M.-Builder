@@ -20,7 +20,8 @@ class App extends React.Component {
         calloutComponents: [],
         lineComponents: [],
         selectedFile: null,
-        calloutId: 0
+        calloutId: 0,
+        currentSrc: '../img/coat-sketch.jpg'
     } 
     this.addCallout = this.addCallout.bind(this)
     this.addLine = this.addLine.bind(this)
@@ -36,12 +37,13 @@ fileSelectedHandler = event => {
 
 fileSubmitHandler = () => {
   console.log(this.state.selectedFile)
-  const data = new FormData() 
-  axios.post("http://localhost:3000/upload", data, { 
-      })
-      .then(res => {
-        console.log(res.statusText)
-      })
+    const data = new FormData()
+    data.append('file', this.state.selectedFile)
+    axios.post("http://localhost:3000/upload", data, {
+    })
+      .then(res => { 
+        console.log(res.file)
+    })
 }
 
 addCallout() {
@@ -131,7 +133,9 @@ onStop = () => {
   render() {
       return (
           <div id='body-grid'>
-              <SketchArea />
+              <SketchArea 
+              currentSrc={this.state.currentSrc}
+              />
               <ToolBar 
               {...this.state} 
               addCallout={this.addCallout} 
