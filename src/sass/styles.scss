@@ -1,8 +1,32 @@
+$black-bg: #111111;
+$black-2: #17151b;
+$slate: #2f2d31;
+$orchid: #ba84fb;
+$orchid-op: transparentize($orchid, 0.8);
+$ochard-hover: transparentize($orchid, 0.9);
+
 * {
     // border: .1px solid black;
     margin: 0px;
     box-sizing: border-box;
 }
+
+#logo {
+    text-align: center;
+    color: white;
+    font-family: roboto;
+    font-weight: 400;
+    padding-bottom: 15px;
+}
+
+
+.input-file {  
+        padding-top: 20px;
+        font-size: 11px;
+        color: white;
+        display: inline-block;
+}
+
 
 #body-grid {
     display: grid;
@@ -20,16 +44,42 @@
     flex-direction: column;
     background: rgb(27, 27, 27);
     .tb-button {
+        font-size: 11px;
         margin: 5px 0px;
-        height: 35px;
-        color: white;
-        background-color: transparent;
+        height: 40px;
+        color: rgb(221, 221, 221);
+        background-color: $black-bg;
+        border: 1px solid $slate;
+        &:hover {
+          border: .75px solid rgba(235, 235, 235, 0.815);
+          background-color: $ochard-hover;
+         }
+        &:active {
+          background-color: $orchid;
+          color: white;
+        }
+        &:focus {
+            outline: none;
+        }
     }
 }
 
 .callout {
     padding: 8px;
     display: flex;
+    position: absolute;
+    &:Hover {
+        background-color: $orchid-op;
+        border-radius: 3px;
+        border: 1px solid $orchid;
+    }
+    &:Focus {
+        border: 1px solid black;
+    }
+    *:active {
+        outline: none;
+    }
+
     div {
         color: lightgrey;
         padding-right: 8px;
@@ -37,26 +87,25 @@
     }
     input {
         border: none;
+        background-color: transparent;
         flex: 3;
         &:Hover {
             border-bottom: lightgrey;
         }
-    }
-    &:Hover {
-        border-radius: 3px;
-        border: 1px solid black;
-    }
-    &:Focus {
-        border: 1px solid black;
-    }
-    *:focus {
-        outline: none;
+        &:focus { 
+            outline: none; 
+        }
     }
 }
+
 #sketch-container {
-    height: 100vh;
+    display: flex;
+    height: 80vh;
     margin: 0px 40px;
     border: .5px solid black;
+    .img {
+        margin: auto;
+    }
 }
 
 //Style form container
@@ -87,5 +136,22 @@
     margin: 5px 0px;
     width: 200px;
     height: 1px;
-    background-color: red;
+    background-color: $orchid;
 }
+
+#notes-container{
+    position: absolute;
+    textarea {
+        border: 1px solid $orchid;
+        background-color: $orchid-op;
+        &:focus { 
+            outline: none; 
+        }
+    }
+    div {
+        font-size: 12px;
+        color: $orchid;
+        font-family: roboto;
+    }
+   
+}  

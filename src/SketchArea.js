@@ -7,7 +7,7 @@ function SketchArea(props) {
         <div id="box-1">
             <StyleForm />
             <div id='sketch-container'>
-                <img src={props.currentSrc}></img>
+                <img class='img' src={props.currentSrc}></img>
             </div>
         </div>
     )

@@ -64,9 +64,8 @@ addCallout() {
     let joined = this.state.calloutComponents.concat(
         <Draggable
             handle=".handle"
-            defaultPosition={{x: 0, y: 0}}
+            defaultPosition={{x: 0, y: 340}}
             position={null}
-            grid={[25, 25]}
             scale={1}
             deleteCallout={this.deleteCallout}
             onStart={this.handleStart}
@@ -110,15 +109,15 @@ addNotes() {
   let joined = this.state.calloutComponents.concat(
       <Draggable
           handle=".handle"
-          defaultPosition={{x: 0, y: 0}}
+          defaultPosition={{x: 0, y: 340}}
           position={null}
           scale={1}
           onStart={this.handleStart}
           onDrag={this.handleDrag}
           onStop={this.handleStop}>
-          <div>
+          <div id='notes-container'>
               <div className="handle">Notes</div>
-              <textarea row='4' column='20'></textarea>
+              <textarea id='textarea' row='4' column='20'></textarea>
           </div>
       </Draggable>
   );
